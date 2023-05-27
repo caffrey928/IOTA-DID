@@ -1,0 +1,123 @@
+button {
+  font-size: 1rem;
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+  background-color: white;
+  line-height: 1.5;
+  margin: 0;
+}
+button {
+  color: #3992ff;
+  font-weight: 500;
+}
+
+#sidebar {
+  width: 22rem;
+  height: 44rem;
+  background-color: #f7f7f7;
+  border-right: solid 1px #e3e3e3;
+
+}
+#sidebar > * {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+#sidebar h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin: auto;
+  padding: 1rem 2rem;
+  border-top: 1px solid #e3e3e3;
+  line-height: 1;
+}
+#button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#button-container >* {
+  margin-top: 10px;
+  margin-bottom: 10px; /* 添加底部間距 */
+}
+#link-button button{
+  width: 18rem;
+}
+
+#login{
+  position: absolute;
+  top: 12rem;   /* 距離頂部的距離 */
+  left: 28rem; 
+}
+
+#login p {
+  font-weight: 500;
+  font-family: inherit;
+}
+#login-button{
+  position: relative;
+  top: 10px;
+}
+#login-button button{
+  width: 18rem;
+  height: 3rem;
+}
+#login-button p{
+  position: relative;
+  top: 5px;
+}
+#name_error{
+  position: relative;
+  top: 20px;
+}
+#name_error p{
+  color: #ff3939;
+}
+#name_empty{
+  position: relative;
+  top: 5px;
+}
+#name_empty p{
+  color: #ff3939;
+}
+#DID {
+  position: absolute;
+  top: 3rem;
+  left: 35rem;
+}
+#display-card {
+  width: 34rem;
+  height: 37rem;
+  left: -12rem;
+  top: -3rem;
+  background-color: #f7f7f7;
+  border: solid 1px #e3e3e3;
+}
+#instruction {
+  position: absolute;
+  top : 13rem;
+  left: 35rem;
+}
+
+
+.App-header {
+  background-color: #0f2a54;
+  min-height: 15vh;
+  min-width: 160vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(20px + 2vmin);
+  color: white;
+}
+
+.input-bordered{
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
