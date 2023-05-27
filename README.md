@@ -7,3 +7,13 @@
 4. `yarn start`
 5. Open a new terminal 
 6. `yarn server`
+
+# issuer
+## client
+`cd client`  
+`npm install`  
+`npm start`  
+## server
+`cd server`  
+`npm install`  
+`node index.js`  
