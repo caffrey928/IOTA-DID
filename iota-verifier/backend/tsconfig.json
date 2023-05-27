@@ -1,0 +1,39 @@
+// {
+//   "compilerOptions": {
+//     "target": "ESNext",
+//     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+//     "module": "ESNext",
+//     "skipLibCheck": true,
+//     "noImplicitAny": true,
+//     "noImplicitThis": true,
+//     "strictNullChecks": true,
+
+//     /* Bundler mode */
+//     "moduleResolution": "bundler",
+//     "allowImportingTsExtensions": true,
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "noEmit": true,
+
+//     /* Linting */
+//     "strict": true,
+//     "noUnusedLocals": true,
+//     "noUnusedParameters": true,
+//     "noFallthroughCasesInSwitch": true
+//   },
+//   "include": ["src"],
+//   "ts-node": {
+//     "esm": true,
+//     "experimentalSpecifierResolution": "node"
+//   }
+// }
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+}
