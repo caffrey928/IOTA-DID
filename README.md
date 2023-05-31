@@ -6,12 +6,34 @@ Make sure you have NodeJS and NPM installed.
 **Node Version** : ^18.16.0
 
 ## Holder
-1. `cd frontend yarn install`
-2. `cd ../backend npm install`
-3. `cd ../`
-4. `yarn start`
-5. Open a new terminal 
-6. `yarn server`
+### Install packages
+```sh
+npm run install-holder
+```
+### Run whole Holder service
+Command below can run whole Holder (frontend and backend) at the same time
+```sh
+npm run holder
+```
+Frontend: `http://localhost:3000/`
+
+Backend: `http://localhost:4000/`
+
+- Run only frontend
+```sh
+cd iota-holder # move into holder folder
+yarn start # run frontend
+```
+- Run only backend
+```sh
+cd iota-holder # move into holder folder
+yarn server # run backend
+```
+### Kill whole Holder service
+```sh
+# check if any service running on 3000 & 4000, and kill them
+npm run kill-holder
+```
 
 ## Issuer
 ### client
@@ -24,7 +46,9 @@ Make sure you have NodeJS and NPM installed.
 `node index.js`
 
 ## Verifier
-In this part, make sure you have PNPM installed. If not, run
+In this part, make sure you have PNPM installed. 
+
+If not, run
 ```sh
 npm install -g pnpm
 ```
@@ -33,25 +57,26 @@ npm install -g pnpm
 pnpm run install-verifier
 ```
 ### Run whole Verifier service
-Command below can run whole Verifier at the same time
+Command below can run whole Verifier (frontend and backend) at the same time
 ```sh
 pnpm run verifier
 ```
 Frontend: `http://localhost:3001/`
+
 Backend: `http://localhost:8000/`
 
 - Run only frontend
 ```sh
 cd iota-verifier # move into verifier folder
-pnpm run start # move into verifier folder
+pnpm run start # run frontend
 ```
 - Run only backend
 ```sh
 cd iota-verifier # move into verifier folder
-pnpm run server # move into verifier folder
+pnpm run server # run backend
 ```
 ### Kill whole Verifier service
 ```sh
-# check if any service running on 3000 & 8000, and kill them
+# check if any service running on 3001 & 8000, and kill them
 pnpm run kill-verifier
 ```
