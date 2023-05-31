@@ -2,8 +2,8 @@
 
 bash kill_issuer.sh
 
-pnpm run start > /dev/null 2>&1 &
-pnpm run server > /dev/null 2>&1 &
+npm run start > /dev/null 2>&1 &
+npm run server > /dev/null 2>&1 &
 
 echo -e "Running Issuer..."
 sleep 3

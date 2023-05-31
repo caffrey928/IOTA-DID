@@ -36,14 +36,34 @@ npm run kill-holder
 ```
 
 ## Issuer
-### client
-`cd client`  
-`npm install`  
-`npm start`  
-### server
-`cd server`  
-`npm install`  
-`node index.js`
+### Install packages
+```sh
+npm run install-issuer
+```
+### Run whole Issuer service
+Command below can run whole Issuer (frontend and backend) at the same time
+```sh
+npm run issuer
+```
+Frontend: `http://localhost:3001/`
+
+Backend: `http://localhost:5000/`
+
+- Run only frontend
+```sh
+cd iota-issuer # move into issuer folder
+npm run start # run frontend
+```
+- Run only backend
+```sh
+cd iota-issuer # move into issuer folder
+npm run server # run backend
+```
+### Kill whole Issuer service
+```sh
+# check if any service running on 3001 & 5000, and kill them
+npm run kill-issuer
+```
 
 ## Verifier
 In this part, make sure you have PNPM installed. 
