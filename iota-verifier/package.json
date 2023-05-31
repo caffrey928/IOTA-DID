@@ -5,6 +5,6 @@
     "scripts": {
       "start": "cd frontend && pnpm run dev",
       "server": "cd backend && pnpm run start",
-      "install-package": "cd frontend && pnpm install && cd .. && cd backend && pnpm install"
+      "install-packages": "cd frontend && pnpm install && cd .. && cd backend && pnpm install"
     }
 }

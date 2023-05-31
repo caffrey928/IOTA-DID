@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # check if frontend is on
-service=$(lsof -n -i:3001 | grep LISTEN)
+service=$(lsof -n -i:3002 | grep LISTEN)
 
 if [ "$service" != "" ]
 then
-    kill $(lsof -t -i:3001)
-    echo -e "kill service running on 3001"
+    kill $(lsof -t -i:3002)
+    echo -e "kill service running on 3002"
 else
-    echo "No service running on 3001"
+    echo "No service running on 3002"
 fi
 
 # check if server is on

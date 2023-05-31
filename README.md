@@ -61,7 +61,7 @@ Command below can run whole Verifier (frontend and backend) at the same time
 ```sh
 pnpm run verifier
 ```
-Frontend: `http://localhost:3001/`
+Frontend: `http://localhost:3002/`
 
 Backend: `http://localhost:8000/`
 
@@ -77,6 +77,6 @@ pnpm run server # run backend
 ```
 ### Kill whole Verifier service
 ```sh
-# check if any service running on 3001 & 8000, and kill them
+# check if any service running on 3002 & 8000, and kill them
 pnpm run kill-verifier
 ```

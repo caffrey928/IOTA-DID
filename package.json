@@ -6,10 +6,10 @@
         "install-holder": "cd iota-holder && npm run install-packages",
         "holder": "cd iota-holder && bash holder.sh",
         "kill-holder": "cd iota-holder && bash kill_holder.sh",
-        "install-issuer": "cd iota-verifier && pnpm run install-package",
-        "issuer": "cd iota-verifier && bash verifier.sh",
-        "kill-issuer": "cd iota-verifier && bash kill_verifier.sh",
-        "install-verifier": "cd iota-verifier && pnpm run install-package",
+        "install-issuer": "cd iota-issuer && npm run install-packages",
+        "issuer": "cd iota-issuer && bash issuer.sh",
+        "kill-issuer": "cd iota-issuer && bash kill_issuer.sh",
+        "install-verifier": "cd iota-verifier && pnpm run install-packages",
         "verifier": "cd iota-verifier && bash verifier.sh",
         "kill-verifier": "cd iota-verifier && bash kill_verifier.sh"
     }

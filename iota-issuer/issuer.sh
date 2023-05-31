@@ -1,0 +1,20 @@
+#!/bin/bash
+
+bash kill_issuer.sh
+
+pnpm run start > /dev/null 2>&1 &
+pnpm run server > /dev/null 2>&1 &
+
+echo -e "Running Issuer..."
+sleep 3
+
+service=$(lsof -n -i:3001 | grep LISTEN)
+server=$(lsof -n -i:5000 | grep LISTEN)
+
+if [ "$service" != "" ] && [ "$server" != "" ]
+then
+    echo -e "Success to run Issuer"
+else
+    echo "Something went wrong running Issuer..."
+    echo "Run 'npm run kill_issuer.sh' to clear all related port"
+fi

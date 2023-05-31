@@ -1,0 +1,10 @@
+{
+    "name": "iota-did-issuer",
+    "version": "1.0.0",
+    "license": "MIT",
+    "scripts": {
+      "start": "cd client && npm start",
+      "server": "cd server && node index.js",
+      "install-packages": "cd client && npm install && cd .. && cd server && npm install"
+    }
+}

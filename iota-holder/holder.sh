@@ -1,5 +1,7 @@
 #!/bin/bash
 
+bash kill_holder.sh
+
 yarn start > /dev/null 2>&1 &
 yarn server > /dev/null 2>&1 &
 

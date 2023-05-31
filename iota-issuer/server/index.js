@@ -46,8 +46,8 @@ app.post("/revocation", (req, res) => {
     console.log(RevocationList)
 });
 
-app.listen(3001, () => {
-    console.log("Yey, your server is running on port 3001");
+app.listen(5000, () => {
+    console.log("Yey, your server is running on port 5000");
 });
 
 const issuerDidPath = "./stronghold-files/issuer.hodl"
