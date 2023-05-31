@@ -6,7 +6,7 @@ pnpm run server > /dev/null 2>&1 &
 echo -e "Running Verifier..."
 sleep 3
 
-service=$(lsof -n -i:3000 | grep LISTEN)
+service=$(lsof -n -i:3001 | grep LISTEN)
 server=$(lsof -n -i:8000 | grep LISTEN)
 
 if [ "$service" != "" ] && [ "$server" != "" ]

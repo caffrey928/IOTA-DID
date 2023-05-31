@@ -2,6 +2,7 @@
 
 ## Prerequisite
 Make sure you have NodeJS and NPM installed.
+
 **Node Version** : ^18.16.0
 
 ## Holder
@@ -36,7 +37,7 @@ Command below can run whole Verifier at the same time
 ```sh
 pnpm run verifier
 ```
-Frontend: `http://localhost:3000/`
+Frontend: `http://localhost:3001/`
 Backend: `http://localhost:8000/`
 
 - Run only frontend

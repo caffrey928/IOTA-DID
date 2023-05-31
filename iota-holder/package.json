@@ -1,11 +1,12 @@
 {
-  "name": "final2",
+  "name": "iota-did-holder",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "start": "cd frontend && yarn start",
-    "server": "cd backend && npm start"
+    "server": "cd backend && npm start",
+    "install-packages": "cd frontend && yarn install && cd .. && cd backend && npm install"
   },
   "dependencies": {
     "bootstrap": "^3.4.1",

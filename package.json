@@ -3,10 +3,14 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
-      "start": "cd frontend && yarn start",
-      "server": "cd backend && yarn server",
-      "install-verifier": "cd iota-verifier && pnpm run install-package",
-      "verifier": "cd iota-verifier && bash verifier.sh",
-      "kill-verifier": "cd iota-verifier && bash kill_verifier.sh"
+        "install-holder": "cd iota-holder && npm run install-packages",
+        "holder": "cd iota-holder && bash holder.sh",
+        "kill-holder": "cd iota-holder && bash kill_holder.sh",
+        "install-issuer": "cd iota-verifier && pnpm run install-package",
+        "issuer": "cd iota-verifier && bash verifier.sh",
+        "kill-issuer": "cd iota-verifier && bash kill_verifier.sh",
+        "install-verifier": "cd iota-verifier && pnpm run install-package",
+        "verifier": "cd iota-verifier && bash verifier.sh",
+        "kill-verifier": "cd iota-verifier && bash kill_verifier.sh"
     }
 }
