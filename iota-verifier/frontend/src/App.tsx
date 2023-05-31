@@ -20,8 +20,6 @@ function App() {
 
     fileReader.onload = () => {
       setFiles(fileReader.result as string);
-      const proof = JSON.parse(fileReader.result as string).proof
-      if(proof) setChallenge(proof.challenge as string)
     };
   };
 
@@ -30,6 +28,24 @@ function App() {
       setVerified(res);
     });
   };
+
+  const generate_challenge = (length: number) => {
+    const characters = 
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let result = '';
+
+    // Create an array of 32-bit unsigned integers
+    const randomValues = new Uint32Array(length);
+    
+    // Generate random values
+    window.crypto.getRandomValues(randomValues);
+    randomValues.forEach((value) => {
+      result += characters.charAt(value % charactersLength);
+    });
+
+    setChallenge(result)
+  }
 
   return (
     <>
@@ -50,8 +66,11 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
+      <Button variant="contained" component="label" onClick={() => generate_challenge(6)}>
+        Generate Challenge
+      </Button>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Challenge: {challenge ? challenge : "Click 'Generate Challenge' to get a random challenge!"}
       </p>
       <Button variant="contained" component="label">
         Upload File
@@ -63,7 +82,6 @@ function App() {
         Verify
       </Button>
       {<p>{verified}</p>}
-      {"uploaded file content -- " + files}
     </>
   );
 }

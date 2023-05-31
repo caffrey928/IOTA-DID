@@ -1,0 +1,12 @@
+{
+    "name": "iota-did",
+    "version": "1.0.0",
+    "license": "MIT",
+    "scripts": {
+      "start": "cd frontend && yarn start",
+      "server": "cd backend && yarn server",
+      "install-verifier": "cd iota-verifier && pnpm run install-package",
+      "verifier": "cd iota-verifier && bash verifier.sh",
+      "kill-verifier": "cd iota-verifier && bash kill_verifier.sh"
+    }
+}
