@@ -9,8 +9,9 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-import Login from './pages/login';
+import CreateDID from './pages/CreateDID';
 import HomePage from './pages/homePage';
+import GetDID from './pages/GetDID'
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,12 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "login/:loginId",
-        element: <Login />,
+        path: "createdid",
+        element: <CreateDID />,
+      },
+      {
+        path: "getdid",
+        element: <GetDID />,
       },
     ],
   },

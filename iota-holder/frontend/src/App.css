@@ -96,12 +96,25 @@ button {
   background-color: #f7f7f7;
   border: solid 1px #e3e3e3;
 }
+#DID p{
+  font-size: 1.5rem;
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.5;
+  margin: 0;
+}
 #instruction {
   position: absolute;
   top : 13rem;
   left: 35rem;
 }
-
+#show_pass{
+  position: absolute;
+  top:8rem;
+  left: 13rem;
+}
 
 .App-header {
   background-color: #0f2a54;
@@ -115,7 +128,7 @@ button {
   color: white;
 }
 
-.input-bordered{
+#input-bordered{
   display: flex;
   margin-top: 10px;
   margin-bottom: 10px;

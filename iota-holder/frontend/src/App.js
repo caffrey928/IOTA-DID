@@ -2,7 +2,6 @@
 import "./App.css";
 import instance from "./api";
 import FileUpload from "./components/FileUpload";
-import GetDID from "./components/GetDID";
 import GetVP from "./components/GetVP";
 import { Outlet, Link } from "react-router-dom";
 function App() {
@@ -20,10 +19,12 @@ function App() {
       <div id="sidebar">
           <h1> IOTA Function</h1>
           <div id="button-container">
-            <Link to ={'/login/2'} id="link-button">
+            <Link to ={'/createdid'} id="link-button">
               <button type="button"> CreateDID </button>
             </Link>
-            <GetDID />
+            <Link to ={'/getdid'} id="link-button">
+              <button type="button"> GetDID </button>
+            </Link>
             <GetVP />
             <Link to ={'/homepage'} id="link-button">
               <button type="button"> Home </button>
