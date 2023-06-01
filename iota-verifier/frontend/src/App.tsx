@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Button from "@mui/material/Button";
 import { Verify } from "./api";
+import MainDialog from "./components/main_dialog";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -49,7 +50,8 @@ function App() {
 
   return (
     <>
-      <div>
+      <MainDialog/>
+      {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -81,7 +83,7 @@ function App() {
       <Button variant="outlined" onClick={handleVerify}>
         Verify
       </Button>
-      {<p>{verified}</p>}
+      {<p>{verified}</p>} */}
     </>
   );
 }
