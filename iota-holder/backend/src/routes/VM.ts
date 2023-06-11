@@ -8,5 +8,6 @@ const VMRoute = async (req: any, res: any) => {
   const message = await addVerificationMethod(userName, password, fragment);
   console.log(message);
   res.send(message);
+  
 };
 export default VMRoute;

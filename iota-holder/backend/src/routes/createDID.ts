@@ -17,7 +17,7 @@ const createDIDRoute = async (req: any, res: any) => {
     // console.log(didData)
     console.log(verificationMethod)
     if(verificationMethod!==""){
-      const message = await addVerificationMethod(userName, password, "key-01")
+      const message = await addVerificationMethod(userName, password, verificationMethod)
       console.log(message)
     }
     res.send(didData)

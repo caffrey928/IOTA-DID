@@ -1,13 +1,7 @@
 
 import "./App.css";
-import instance from "./api";
-import FileUpload from "./components/FileUpload";
-import GetVP from "./components/GetVP";
 import { Outlet, Link } from "react-router-dom";
 function App() {
-  const createDID = (userName, password) => {
-    
-  };
   return (
     <div className="App">
       <header className="App-header">
@@ -20,12 +14,17 @@ function App() {
           <h1> IOTA Function</h1>
           <div id="button-container">
             <Link to ={'/createdid'} id="link-button">
-              <button type="button"> CreateDID </button>
+              <button type="button"> Create DID </button>
+            </Link>
+            <Link to ={'/addvm'} id="link-button">
+              <button type="button"> Add Verification Method </button>
             </Link>
             <Link to ={'/getdid'} id="link-button">
-              <button type="button"> GetDID </button>
+              <button type="button"> Get DID </button>
             </Link>
-            <GetVP />
+            <Link to ={'/getvp'} id="link-button">
+              <button type="button"> Get Verification Presentation </button>
+            </Link>
             <Link to ={'/homepage'} id="link-button">
               <button type="button"> Home </button>
             </Link>

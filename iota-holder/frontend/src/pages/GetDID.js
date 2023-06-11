@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import instance from "../api";
 import Card from 'react-bootstrap/Card';
-import { JsonView, darkStyles, defaultStyles } from 'react-json-view-lite';
+import { JsonView,  defaultStyles } from 'react-json-view-lite';
 import 'react-json-view-lite/dist/index.css';
-
-export default function Login(){
+import downloadFile from "../downloadFileAPI";
+import FileDownload from "js-file-download";
+export default function GetDID(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [toggleWord, setToggleWord] = useState("show");
@@ -84,14 +85,17 @@ export default function Login(){
             
         }
     };
-    function changePasswordType(e) {
-        if (password.type === "password") {
-          password.type = "text";
-        } else {
-          password.type = "password";
-        }
-      }
-
+    const downloadSH = async()=>{
+        downloadFile
+      .get("/downloadSH", { params: { name: username } })
+      .then((res) => {
+        console.log(res);
+        FileDownload(res.data, username.concat(".hodl"));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    };
     return(
         <div id="login">
             <div className="card-body">
@@ -132,7 +136,12 @@ export default function Login(){
                 <div id="DID">
                     <Card id="display-card">
                         {(iotaDID!=="") ?
-                        <JsonView id="json-word" data={iotaDID} shouldInitiallyExpand={(level) => true} style={defaultStyles} />
+                        <div>
+                            <p>Download Your Stronghold File: </p>
+                            <button id="download" className="btn btn-outline-dark btn-sm " onClick={downloadSH}>Download</button>
+                            <p>Your DID document: </p>
+                            <JsonView id="json-word" data={iotaDID} shouldInitiallyExpand={(level) => true} style={defaultStyles} />
+                        </div>
                         :<p>
                         Instruction:    
                         </p>}

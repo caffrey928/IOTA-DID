@@ -1,8 +1,7 @@
-import React, { Children } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {
   createBrowserRouter,
@@ -12,6 +11,8 @@ import {
 import CreateDID from './pages/CreateDID';
 import HomePage from './pages/homePage';
 import GetDID from './pages/GetDID'
+import GetVP from './pages/GetVP';
+import AddVM from './pages/AddVM';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,13 @@ const router = createBrowserRouter([
         path: "getdid",
         element: <GetDID />,
       },
+      {
+        path: "getvp",
+        element: <GetVP/>
+      },{
+        path: "addvm",
+        element: <AddVM />,
+      }
     ],
   },
 ]);

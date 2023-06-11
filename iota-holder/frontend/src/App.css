@@ -83,6 +83,13 @@ button {
 #name_empty p{
   color: #ff3939;
 }
+#successful{
+  position: relative;
+  top: 5px;
+}
+#successful p{
+  color: #3c39ff;
+}
 #DID {
   position: absolute;
   top: 3rem;
@@ -114,6 +121,22 @@ button {
   position: absolute;
   top:8rem;
   left: 13rem;
+}
+#download{
+  position: relative;
+  left: 10px;
+}
+#getvp-button{
+  position: relative;
+  top: 5px;
+}
+#getvp-button button{
+  width: 22.5rem;
+  height: 3rem;
+}
+#getvp-button p{
+  position: relative;
+  top: 5px;
 }
 
 .App-header {
