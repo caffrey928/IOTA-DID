@@ -15,7 +15,7 @@ const VPRoute = async (req: any, res: any) => {
     holderPassword,
     credentialFile,
     fragment,
-    "xyz123"//challenge
+    challenge
   );
   console.log(message);
   res.send(message);

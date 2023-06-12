@@ -33,7 +33,7 @@ const MainDialog = () => {
     try {
       setLoading(true);
 
-      Verify(files, 'xyz123').then((res) => {
+      Verify(files, challenge).then((res) => {
         setVerified(res);
         setLoading(false);
       });
@@ -76,8 +76,7 @@ const MainDialog = () => {
             fontSize: "18px",
             textAlign: "center",
             marginBottom: "1rem",
-          }}
-        >
+          }}>
           Verifying...
         </p>
         <BarLoader
@@ -106,8 +105,7 @@ const MainDialog = () => {
 
         <button
           className="dialog__button"
-          onClick={() => generate_challenge(6)}
-        >
+          onClick={() => generate_challenge(6)}>
           Generate Challenge
         </button>
         <label className="dialog__fileButton">
@@ -189,8 +187,7 @@ const MainDialog = () => {
               <IconButton
                 size="large"
                 title="Tutorial"
-                onClick={() => setTutorial(!tutorial)}
-              >
+                onClick={() => setTutorial(!tutorial)}>
                 {tutorial ? (
                   <CloseIcon className="dialog__icon" />
                 ) : (
