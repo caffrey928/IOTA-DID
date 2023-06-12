@@ -33,7 +33,7 @@ const MainDialog = () => {
     try {
       setLoading(true);
 
-      Verify(files, challenge).then((res) => {
+      Verify(files, 'xyz123').then((res) => {
         setVerified(res);
         setLoading(false);
       });

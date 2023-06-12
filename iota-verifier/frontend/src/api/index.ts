@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const baseURL = `http://localhost:8000`;
-const baseURL = `http://10.47.250.232:8000`;
+const baseURL = `http://localhost:8000`;
+// const baseURL = `http://10.47.250.232:8000`;
 
 type VerifyResponse = {
       verified: string
