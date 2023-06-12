@@ -2,14 +2,27 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const fs = require('fs');
-const { init_issuer, createVC, revocation } = require("./src/index.js")
+const { init_issuer, createVC, revocation, writeData } = require("./src/index.js")
 
 app.use(cors());
 app.use(express.json());
 
+const issuerDidPath = "./stronghold-files/issuer.hodl"
+const issuerName = "issuer"
+const issuerPassword = "123456"
+const revocationFragment = "rev-1"
+const verificationMethodFragment = "key-1"
 
-var nextRevocationIdx = 1;  // mark the next index for create VC
-var RevocationList = {};  // save the revocation list by dictionary
+var nextRevocationIdx
+var RevocationList
+
+async function getSave() {
+    const save = await init_issuer(issuerName, issuerPassword, issuerDidPath, revocationFragment);
+    nextRevocationIdx = save["nextIdx"];  // mark the next index for create VC
+    RevocationList = save["revocationList"];  // save the revocation list by dictionary
+    console.log(RevocationList, nextRevocationIdx)
+}
+getSave()
 
 function deleteItemByValue(dict, value) {
     for (let key in dict) {
@@ -18,6 +31,7 @@ function deleteItemByValue(dict, value) {
             break;
         }
     }
+    writeData("save.json", RevocationList, nextRevocationIdx)
 }
 
 app.post("/create", async (req, res) => {
@@ -29,6 +43,7 @@ app.post("/create", async (req, res) => {
     RevocationList[subjectName] = nextRevocationIdx
     nextRevocationIdx += 1
     console.log(RevocationList)
+    writeData("save.json", RevocationList, nextRevocationIdx)
     //console.log(VC)
     res.send(VC)
 });
@@ -50,9 +65,4 @@ app.listen(5000, () => {
     console.log("Yey, your server is running on port 5000");
 });
 
-const issuerDidPath = "./stronghold-files/issuer.hodl"
-const issuerName = "issuer"
-const issuerPassword = "123456"
-const revocationFragment = "rev-1"
-const verificationMethodFragment = "key-1"
-init_issuer(issuerName, issuerPassword, issuerDidPath, revocationFragment);
+

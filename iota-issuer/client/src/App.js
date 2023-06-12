@@ -28,10 +28,10 @@ function App() {
             record: record
         }
 
-        Axios.post("http://localhost:3001/create", data)
+        Axios.post("http://localhost:5000/create", data)
             .then((response) => {
                 const blob = new Blob([JSON.stringify(response.data)], { type: 'application/json' });
-                saveAs(blob, 'VC.json');
+                saveAs(blob, info.name + '-VC.json');
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -41,11 +41,11 @@ function App() {
 
     const revocation = () => {
         console.log(revocationIdx);
-        Axios.post("http://localhost:3001/revocation", revocationIdx);
+        Axios.post("http://localhost:5000/revocation", revocationIdx);
     };
 
     const showRevocationList = () => {
-        Axios.get("http://localhost:3001/showRevocationList", revocationIdx)
+        Axios.get("http://localhost:5000/showRevocationList", revocationIdx)
             .then((response) => {
                 console.log(response.data)
             })
