@@ -16,5 +16,5 @@ then
     echo -e "Success to run Issuer"
 else
     echo "Something went wrong running Issuer..."
-    echo "Run 'npm run kill_issuer.sh' to clear all related port"
+    echo "Run 'npm run kill-issuer' to clear all related port"
 fi
