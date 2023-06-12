@@ -76,7 +76,7 @@ export default function AddVM(){
                 if(res.data==="Exist"){
                     console.log(res.data)
                     instance
-                    .post("/VM", { params: { name: username, password: password, fragment: verificationMethod } })
+                    .post("/VM", { name: username, password: password, fragment: verificationMethod })
                     .then((res) => {
                         console.log(res);
                         setSomethingError(false);
