@@ -19,13 +19,13 @@ For more details about the process of DID, please visit [this website](https://w
 
 ## **Outline**
 
-## [Prerequisite](#prerequisite)
+[Prerequisite](#prerequisite)
 
-## [Holder](#holder)
+[Holder](#holder)
 
-## [Issuer](#issuer)
+[Issuer](#issuer)
 
-## [Verifier](#verifier)
+[Verifier](#verifier)
 
 ## **Prerequisite**
 Make sure you have NodeJS and NPM installed.
