@@ -9,7 +9,6 @@ import DownloadFileRoute from "./DownloadFile";
 import uploadFileRoute from "./uploadFile";
 import downloadVPRoute from "./downloadVP";
 import checkUsrNameRoute from "./checkUsrName";
-import removeFileRoute from "./removeFile";
 const wrap =
   (fn: any) =>
   (...args: any) =>
@@ -27,7 +26,6 @@ function main(app: any) {
   app.get("/api/downloadVP", wrap(downloadVPRoute));
   app.post("/api/checkUsrName", wrap(checkUsrNameRoute));
   app.post("/api/VM", wrap(VMRoute));
-  app.post("/api/removeFile", wrap(removeFileRoute));
 }
 
 export default main;

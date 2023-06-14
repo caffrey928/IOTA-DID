@@ -1,6 +1,7 @@
 import { createDID } from '../iota-function/createDid'
 import { addVerificationMethod } from '../iota-function/verificationMethods'
 import fs from 'fs';
+import { loadDID } from "../iota-function/loadDid";
 const createDIDRoute = async (req: any, res: any) => {
   console.log(req.body)
   const body = req.body
@@ -20,7 +21,8 @@ const createDIDRoute = async (req: any, res: any) => {
       const message = await addVerificationMethod(userName, password, verificationMethod)
       console.log(message)
     }
-    res.send(didData)
+    const account = await loadDID(userName, password);
+    res.send(account.document());
   }
 }
 export default createDIDRoute
