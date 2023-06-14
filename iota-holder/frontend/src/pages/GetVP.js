@@ -4,23 +4,22 @@ import Card from "react-bootstrap/Card";
 import "react-json-view-lite/dist/index.css";
 import downloadFile from "../downloadFileAPI";
 import FileDownload from "js-file-download";
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import InputGroup from 'react-bootstrap/InputGroup';
+import img_hide from '../images/hide.png'
+import img_view from '../images/view.png'
+
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [toggleWord, setToggleWord] = useState("show");
   const [passwordType, setPasswordType] = useState("password");
-  const [nameError, setNameError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [nameEmpty, setNameEmpty] = useState(false);
-  const [passwordEmpty, setPasswordEmpty] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
-  const [bothEmpty, setBothEmpty] = useState(false);
   const [file, setFile] = useState();
-  const [fileError, setFileError] = useState(false);
   const [verificationMethod, setVerificationMethod] = useState("");
-  const [verificationError, setVerificationError] = useState(false);
   const [challenge, setChallenge] = useState("");
-  const [challengeError, setChallengeError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleFileChange = (e) => {
     if (e.target.files) {
@@ -37,7 +36,7 @@ export default function Login() {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
-  const handleVC = (e) => {
+  const handleVM = (e) => {
     setVerificationMethod(e.target.value);
   };
   const togglePassword = () => {
@@ -51,32 +50,25 @@ export default function Login() {
   };
   const handleLogin = (e) => {
     setLoading(true);
-    setNameError(false);
-    setNameEmpty(false);
-    setPasswordEmpty(false);
-    setBothEmpty(false);
-    setPasswordError(false);
-    setFileError(false);
-    setChallengeError(false);
-    setVerificationError(false);
+    setErrorMessage("");
 
     if (password === "" && username === "") {
-      setBothEmpty(true);
+      setErrorMessage("Please enter username and password!");
       setLoading(false);
     } else if (password === "") {
-      setPasswordEmpty(true);
+      setErrorMessage("Please enter password!");
       setLoading(false);
     } else if (username === "") {
-      setNameEmpty(true);
+      setErrorMessage("Please enter username!");
       setLoading(false);
     } else if (!file) {
-      setFileError(true);
+      setErrorMessage("Please choose the correct file!");
       setLoading(false);
     } else if (verificationMethod === "") {
-      setVerificationError(true);
+      setErrorMessage("Please enter the fragment!");
       setLoading(false);
     } else if (challenge === "") {
-      setChallengeError(true);
+      setErrorMessage("Please enter challenge!");
       setLoading(false);
     } else {
       instance
@@ -89,7 +81,7 @@ export default function Login() {
         })
         .then((res) => {
           if (res.data !== "Exist") {
-            setNameError(true);
+            setErrorMessage("User doesn't exist!");
           }
           console.log(res);
           if (res.data === "Exist") {
@@ -136,11 +128,13 @@ export default function Login() {
                       })
                       .catch((err) => {
                         console.log(err);
+                        setErrorMessage("Something wrong!");
                         setLoading(false);
                       });
                   })
                   .catch((err) => {
                     console.log(err);
+                    setErrorMessage("Something wrong!");
                     setLoading(false);
                   });
               });
@@ -153,114 +147,62 @@ export default function Login() {
 
   return (
     <div id="login">
-      <div className="card-body">
-        <div className="form-control">
-          <span className="label-text">
-            <p>User Name: </p>
-          </span>
-          <input
-            type="text"
-            placeholder="user name"
-            className="input-bordered"
-            value={username}
-            onChange={handleUsername}
-          />
-        </div>
-        <div className="form-control">
-          <span className="label-text">
-            <p>Password: </p>
-          </span>
-          <input
-            type={passwordType}
-            placeholder="password"
-            id="input-bordered"
-            value={password}
-            onChange={handlePassword}
-          />
-          <div id="show_pass">
-            <button
-              className="btn btn-outline-primary"
-              onClick={togglePassword}>
-              {passwordType === "password" ? (
-                <i className="bi bi-eye-slash"></i>
-              ) : (
-                <i className="bi bi-eye"></i>
-              )}
-              {toggleWord}
-            </button>
-          </div>
-        </div>
-        <div className="form-control">
-          <span className="label-text">
-            <p>Verification Method: </p>
-          </span>
-          <input
-            type="text"
-            placeholder="fragment"
-            className="input-bordered"
-            value={verificationMethod}
-            onChange={handleVC}
-          />
-        </div>
-        <div className="form-control">
-          <span className="label-text">
-            <p>Challenge: </p>
-          </span>
-          <input
-            type="text"
-            placeholder="challenge"
-            className="input-bordered"
-            value={challenge}
-            onChange={handleChallenge}
-          />
-        </div>
-        <div className="form-control">
-          <span className="label-text">
-            <p>Credential File: </p>
-          </span>
-          <input type="file" accept=".json" onChange={handleFileChange} />
-        </div>
-        <div id="getvp-button">
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={handleLogin}
-            disabled={loading}>
-            {loading ? <p>Geting...</p> : <p>Get</p>}
-          </button>
-        </div>
-        <div id="name_error">
-          {nameError ? (
-            <p>User does not Exist! Please try another name.</p>
-          ) : (
-            <p></p>
-          )}
-        </div>
-        <div id="name_empty">
-          {bothEmpty ? <p>Please fill in usrname and password!</p> : <p></p>}
-        </div>
-        <div id="name_empty">
-          {passwordEmpty ? <p>Please fill in password!</p> : <p></p>}
-        </div>
-        <div id="name_empty">
-          {nameEmpty ? <p>Please fill in username!</p> : <p></p>}
-        </div>
-        <div id="name_empty">
-          {passwordError ? <p>Wrong passwrd!</p> : <p></p>}
-        </div>
-        <div id="name_empty">{fileError ? <p>Empty file!</p> : <p></p>}</div>
-        <div id="name_empty">
-          {challengeError ? <p>Empty challenge!</p> : <p></p>}
-        </div>
-        <div id="name_empty">
-          {verificationError ? <p>Empty verification method!</p> : <p></p>}
-        </div>
-        <div id="DID">
-          <Card id="display-card">
-            <p>Instruction:</p>
-          </Card>
-        </div>
-      </div>
+      <Card style={{ width: '25rem' }} className="DID_card">
+                <Container className='login_container'>
+                <Form>
+                    <Form.Group className="mb-3" controlId="user name">
+                        <Form.Label>User Name</Form.Label>
+                        <Form.Control type="text" placeholder="user name"  value={username} onChange={handleUsername} />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                        <InputGroup className="mb-3">
+                            <Form.Control type={passwordType} placeholder="password" id="input-bordered" value={password} onChange={handlePassword} /> 
+                            <div class="input-group-append" style={{marginTop:"10px"}}>
+                              <button type="button" className="btn btn-outline-info btn-sm" onClick={togglePassword} style={{height: "38px"}}>
+                                { passwordType==="password"? <i className="bi bi-eye-slash"></i> :<i className="bi bi-eye"></i> }
+                                {toggleWord==="show" ? <img src={img_hide} alt="hide" width={'25px'}/>: <img src={img_view} width={"25px"} alt="show"/>}
+                                </button>
+                            </div>
+                        </InputGroup>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="fragment">
+                        <Form.Label>Verification Method</Form.Label>
+                        <Form.Control type="text" placeholder="fragment"  value={verificationMethod} onChange={handleVM} /> 
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="challenge">
+                        <Form.Label>Challenge</Form.Label>
+                        <Form.Control type="text" placeholder="challenge"  value={challenge} onChange={handleChallenge} /> 
+                    </Form.Group>
+                    <Form.Group controlId="formFile" className="mb-3">
+                      <Form.Label>Credential File</Form.Label>
+                      <Form.Control type="file" accept=".json" onChange={handleFileChange}/>
+                    </Form.Group>
+                    <Form.Group>
+                        <div className="text-center align-items-center">
+                            <button type="button" className="btn btn-outline-light" onClick={handleLogin} disabled={loading} style={{height: "40px", width:'10rem'}}>
+                                {loading ? <p>Getting...</p> : <p>Get</p>}
+                            </button>
+                        </div>
+                    </Form.Group>
+                </Form>
+                </Container>
+            </Card>
+            <div id="errorMessage">
+                <p>{errorMessage}</p>
+            </div>
+            <div id="DID">
+                <Card id="display-card">
+                  <h1>
+                     Get Verification Presentation
+                  </h1>
+                  <p>
+                    1. Enter correct username, password, fragment and challenge.<br/><br/>
+                    2. Select the credential json file, which should be provided by issuer<br/><br/>
+                    3. Challeng is randomly generated by verifier.
+                  </p>
+                </Card>
+            </div>
     </div>
   );
 }

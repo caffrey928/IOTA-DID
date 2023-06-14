@@ -1,122 +1,119 @@
-button {
-  font-size: 1rem;
-  font-family: inherit;
-  border: none;
-  border-radius: 8px;
-  padding: 0.5rem 0.75rem;
-  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
-  background-color: white;
-  line-height: 1.5;
-  margin: 0;
-}
-button {
-  color: #3992ff;
-  font-weight: 500;
-}
 
-#sidebar {
-  width: 22rem;
-  height: 44rem;
-  background-color: #f7f7f7;
-  border-right: solid 1px #e3e3e3;
-
-}
-#sidebar > * {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-#sidebar h1 {
-  font-size: 2rem;
+.card.custom-class {
+  color:#fefbfb;
+  background-color: rgba(180, 180, 180, 0.4);
+  width: 25rem;
+  height: 12rem;
+  font-family: 'Metropolis', sans-serif;
   font-weight: 500;
-  text-align: center;
-  margin: auto;
-  padding: 1rem 2rem;
-  border-top: 1px solid #e3e3e3;
-  line-height: 1;
+  left: 9rem;
 }
-#button-container {
+.login_container{
   display: flex;
   flex-direction: column;
+  margin: 20px;
+  color: #ffffff;
+  
 }
-
-#button-container >* {
-  margin-top: 10px;
-  margin-bottom: 10px; /* 添加底部間距 */
+.card.DID_card{
+  background-color: rgba(15, 193, 183, 0.3);
+}
+#login{
+  position: relative;
+  top: 6rem;
+  left: 13.65rem;
+}
+#card_button{
+  background-color: rgba(252, 252, 252, 0.3);
+  font-size: large;
+  font-weight: 600;
+  color: #F2F5FB;
+  border-color: #e3e3e3;
+}
+#card_button:hover{
+  background-color: #0FC1B7;
+  font-size: large;
+  font-weight: 600;
+  color: #ffffff;
+  border-color: #0FC1B7;
+}
+.form{
+  background-color: #3c39ff;
+  color: #ff3939;
+}
+#toggle_button{
+  position: absolute;
+  left: 6rem;
+  top: 6.9rem;
+  color: #f7f7f7;
+}
+#toggle_button_vp{
+  position: absolute;
+  left: 6rem;
+  top: 6rem;
+  color: #f7f7f7;
 }
 #link-button button{
   width: 18rem;
 }
+#create_button{
+  width: 20rem;
+  color: #F2F5FB;
+}
+#errorMessage{
+  color: #ff0000;
+  font-size: 1.1rem;
+}
+#success{
+  position: relative;
+  left: 9rem;
+  color: #00E0CA;
+  font-size: 1.8rem;
+}
 
-#login{
-  position: absolute;
-  top: 12rem;   /* 距離頂部的距離 */
-  left: 28rem; 
-}
-
-#login p {
-  font-weight: 500;
-  font-family: inherit;
-}
-#login-button{
-  position: relative;
-  top: 10px;
-}
-#login-button button{
-  width: 18rem;
-  height: 3rem;
-}
-#login-button p{
-  position: relative;
-  top: 5px;
-}
-#name_error{
-  position: relative;
-  top: 20px;
-}
-#name_error p{
-  color: #ff3939;
-}
-#name_empty{
-  position: relative;
-  top: 5px;
-}
-#name_empty p{
-  color: #ff3939;
-}
-#successful{
-  position: relative;
-  top: 5px;
-}
-#successful p{
-  color: #3c39ff;
-}
 #DID {
   position: absolute;
-  top: 3rem;
-  left: 35rem;
+  top: 0rem;
+  left: 45rem;
+  display: flex;
+  
 }
 #display-card {
   width: 34rem;
-  height: 37rem;
-  left: -12rem;
-  top: -3rem;
-  background-color: #f7f7f7;
-  border: solid 1px #e3e3e3;
+  height: 36rem;
+  left: -9rem;
+  top: -1.5rem;
+  background-color: rgba(150, 150, 150, 0.0);
+  border: none;
+  overflow: scroll;
 }
 #DID p{
-  font-size: 1.5rem;
-  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight:500;
+  font-family: 'Metropolis', sans-serif;
   border: none;
-  border-radius: 8px;
-  padding: 0.5rem 0.75rem;
-  line-height: 1.5;
-  margin: 0;
+  color: #fefbfb;
+  margin-top: 15px;
+  margin-left: 30px;
 }
+#DID h1{
+  margin-top: 10px;
+  margin-left: 30px;
+  color: #F2F5FB;
+}
+
 #instruction {
-  position: absolute;
-  top : 13rem;
-  left: 35rem;
+  position: relative;
+  top : 6.2rem;
 }
+#instruction h1{
+  color: #f7f7f7;
+  margin-bottom: 3rem;
+  font-family: 'Metropolis', sans-serif;
+  font-weight: 600;
+}
+
+
 #show_pass{
   position: absolute;
   top:8rem;
@@ -124,32 +121,61 @@ button {
 }
 #download{
   position: relative;
-  left: 10px;
-}
-#getvp-button{
-  position: relative;
-  top: 5px;
-}
-#getvp-button button{
-  width: 22.5rem;
-  height: 3rem;
-}
-#getvp-button p{
-  position: relative;
-  top: 5px;
+  left: 20px;
 }
 
+
 .App-header {
-  background-color: #0f2a54;
-  min-height: 15vh;
-  min-width: 160vh;
+  background-color: rgb(0, 0, 0, 0.7);
+  min-height: 17vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+#logo {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(20px + 2vmin);
-  color: white;
+  align-items: left;
 }
+.nav .nav-link {
+  color: #f7f7f7;
+  font-size: 17px;
+  font-family: 'Metropolis', sans-serif;
+  font-weight: 500;                                         
+}
+.nav .nav-link:hover{
+  color: #0FC1B7;
+}
+
+
+.position-relative{
+  top: 4rem;
+  left: 10rem;
+}
+.App-header h1{
+  position: relative;
+  top: 4px;
+  left: 2rem;
+  font-size: 30px;
+  color: white;
+  font-family: 'Metropolis', sans-serif;
+  font-weight: 600;
+}
+.App-header img{
+  position: relative;
+  left: 7rem;
+}
+
+
+
+.App{
+  background-image: url(./images/d3e899ac12459a54faa1396599f02939.jpg);
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 #input-bordered{
   display: flex;

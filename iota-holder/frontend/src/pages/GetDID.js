@@ -5,18 +5,20 @@ import { JsonView,  defaultStyles } from 'react-json-view-lite';
 import 'react-json-view-lite/dist/index.css';
 import downloadFile from "../downloadFileAPI";
 import FileDownload from "js-file-download";
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import InputGroup from 'react-bootstrap/InputGroup';
+import img_hide from '../images/hide.png'
+import img_view from '../images/view.png'
+
 export default function GetDID(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [toggleWord, setToggleWord] = useState("show");
     const [passwordType, setPasswordType] = useState("password");
-    const [nameError, setNameError] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [nameEmpty, setNameEmpty] = useState(false);
-    const [passwordEmpty, setPasswordEmpty] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
-    const [bothEmpty, setBothEmpty] = useState(false);
-    const [iotaDID, setIotaDID] = useState("")
+    const [iotaDID, setIotaDID] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const handleUsername = (e) => {
         setUsername(e.target.value);
       }; 
@@ -35,20 +37,16 @@ export default function GetDID(){
       }
     const handleLogin = (e) => {
         setLoading(true);
-        setNameError(false);
-        setNameEmpty(false);
-        setPasswordEmpty(false);
-        setBothEmpty(false);
-        setPasswordError(false);
+        setErrorMessage("")
         setIotaDID("")
         if(password==="" && username===""){
-            setBothEmpty(true)
+            setErrorMessage("Please enter username and password!");
             setLoading(false);
         }else if(password===""){
-            setPasswordEmpty(true)
+            setErrorMessage("Please enter password!");
             setLoading(false);
         }else if(username===""){
-            setNameEmpty(true)
+            setErrorMessage("Please enter username!");
             setLoading(false);
         }else{
             
@@ -58,10 +56,11 @@ export default function GetDID(){
             })
             .catch((err) => {
                 console.log(err);
+                setErrorMessage("Something wrong!");
             })
             .then((res)=>{
                 if(res.data!=="Exist"){
-                    setNameError(true);
+                    setErrorMessage("User does not exist!");;
                 }
                 console.log(res)
                 if(res.data==="Exist"){
@@ -75,7 +74,7 @@ export default function GetDID(){
                     })
                     .catch((err) => {
                         console.log(err);
-                        setPasswordError(true);
+                        setErrorMessage("Something wrong!");
                         setLoading(false);
                     });
                 }else{
@@ -98,55 +97,57 @@ export default function GetDID(){
     };
     return(
         <div id="login">
-            <div className="card-body">
-                <div className="form-control">
-                    <span className="label-text"><p>User Name:    </p></span>
-                    <input type="text" placeholder="user name" className="input-bordered" value={username} onChange={handleUsername}/>
-                </div> 
-                <div className="form-control">
-                    <span className="label-text"><p>Password: </p></span>
-                    <input type={passwordType} placeholder="password" id="input-bordered" value={password} onChange={handlePassword}/>
-                    <div id="show_pass">
-                        <button className="btn btn-outline-primary" onClick={togglePassword}>
-                            { passwordType==="password"? <i className="bi bi-eye-slash"></i> :<i className="bi bi-eye"></i> }
-                            {toggleWord}
-                        </button>
-                    </div>
-                </div>
-                <div id="login-button">
-                <button type="button" className="btn btn-primary" onClick={handleLogin} disabled={loading}>
-                    {loading ? <p>Geting...</p> : <p>Get</p>}
-                </button>
-                </div>
-                <div id="name_error">
-                {nameError ? <p>User does not Exist! Please try another name.</p>:<p></p>}
-                </div>
-                <div id="name_empty">
-                {bothEmpty ? <p>Please fill in usrname and password!</p>:<p></p>}
-                </div>
-                <div id="name_empty">
-                {passwordEmpty ? <p>Please fill in password!</p>:<p></p>}
-                </div>
-                <div id="name_empty">
-                {nameEmpty ? <p>Please fill in username!</p>:<p></p>}
-                </div>
-                <div id="name_empty">
-                {passwordError ? <p>Wrong passwrd!</p>:<p></p>}
-                </div>
-                <div id="DID">
-                    <Card id="display-card">
-                        {(iotaDID!=="") ?
+            <Card style={{ width: '25rem' }} className="DID_card">
+                <Container className='login_container'>
+                <Form>
+                    <Form.Group className="mb-3" controlId="user name">
+                        <Form.Label>User Name</Form.Label>
+                        <Form.Control type="text" placeholder="user name" id="input-bordered" value={username} onChange={handleUsername} />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                        <InputGroup className="mb-3">
+                            <Form.Control type={passwordType} placeholder="password" id="input-bordered" value={password} onChange={handlePassword} /> 
+                            <div class="input-group-append" style={{marginTop:"10px"}}>
+                                <button type="button" className="btn btn-outline-info btn-sm" onClick={togglePassword} style={{height: "38px"}}>
+                                { passwordType==="password"? <i className="bi bi-eye-slash"></i> :<i className="bi bi-eye"></i> }
+                                {toggleWord==="show" ? <img src={img_hide} alt="hide" width={'25px'}/>: <img src={img_view} width={"25px"} alt="show"/>}
+                                </button>
+                            </div>
+                        </InputGroup>
+                    </Form.Group>
+                    <Form.Group>
+                        <div className="text-center align-items-center">
+                            <button type="button" className="btn btn-outline-light" onClick={handleLogin} disabled={loading} style={{height: "40px", width:'10rem'}}>
+                                {loading ? <p>Getting...</p> : <p>Get</p>}
+                            </button>
+                        </div>
+                    </Form.Group>
+                </Form>
+                </Container>
+            </Card>
+            <div id="errorMessage">
+                <p>{errorMessage}</p>
+            </div>
+            <div id="DID">
+                <Card id="display-card">
+                        {(iotaDID!=="" && iotaDID!=="Repeat") ?
                         <div>
                             <p>Download Your Stronghold File: </p>
-                            <button id="download" className="btn btn-outline-dark btn-sm " onClick={downloadSH}>Download</button>
+                            <button id="download" className="btn btn-light" onClick={downloadSH}>Download</button>
                             <p>Your DID document: </p>
                             <JsonView id="json-word" data={iotaDID} shouldInitiallyExpand={(level) => true} style={defaultStyles} />
+                        </div>:
+                        <div>
+                            <h1>
+                                Get Digital Identity
+                            </h1>
+                            <p>
+                                1. Enter correct username, password.<br/><br/>
+                            </p>
                         </div>
-                        :<p>
-                        Instruction:    
-                        </p>}
-                     </Card>
-                </div>
+                        }
+                </Card>
             </div>
         </div>
 
