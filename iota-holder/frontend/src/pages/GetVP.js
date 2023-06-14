@@ -132,6 +132,7 @@ export default function Login() {
                           username.concat("-presentation.json")
                         );
                         setLoading(false);
+                        instance.post("/removeFile");
                       })
                       .catch((err) => {
                         console.log(err);
